@@ -1,0 +1,63 @@
+        .credit_check {
+            width: 544px;
+            height: 60px;
+        }
+        
+        .btn {
+            border: 2px solid #0FB7B6
+        }
+        
+        .btn:hover {
+            background-color: #0FB7B6;
+        }
+        
+        .container:hover {
+            color: white;
+        }
+        
+        .btnsend:hover {
+            background-color: #0FB7B6;
+        }
+        
+        .btnsend {
+            background: #D0D8DA;
+            padding: 15px 30px;
+            width: 531px;
+        }
+        
+        #checkbox {
+            transform: translateY(5px);
+            animation-timing-function: step-end;
+        }
+        
+        .buton:hover {
+            background-color: #0FB7B6;
+        }
+        
+        .select2-search__field {
+            display: none;
+        }
+        
+        @media(max-width:412px) {
+            .select2-container--default .select2-selection--single {
+                width: 100px;
+            }
+            .select2-selection__arrow {
+                padding: 18px 50px;
+            }
+            .select2-selection {
+                margin-left: 70px;
+            }
+            .hidden_flag {
+                visibility: hidden;
+            }
+        }
+        
+        @media (min-width: 1920px) {
+            .cardelement {
+                width: 1530px;
+            }
+            .metodo_Pagamento {
+                width: 1530px;
+            }
+        }
