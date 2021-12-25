@@ -7,9 +7,13 @@ use Livewire\Component;
 class InputRadio extends Component
 {
     public $lblradio;
-    public function mount($lblradioEl){
+    public $radioName;
+    
+    public function mount($lblradioEl, $radioName){
         
         $this->lblradio=$lblradioEl;
+        $this->radioName=$radioName;
+        
     }
     public function render()
     {

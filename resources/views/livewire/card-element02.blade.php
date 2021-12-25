@@ -1,4 +1,4 @@
-<div class="flex flex-col  w-80 h-36 rounded-md mr-6" style=" background-color: #d0d8da;">
+<div class="bg-inactive flex flex-col  w-80 h-36 rounded-md mr-6 radio-lbl" id="{{$divId}}" style="background-color: #d0d8da;">
                 <p class="sm:inline-flex text-white text-sm mt-5 ml-4">
                   {{$teksti }}
                   <svg xmlns="http://www.w3.org/2000/svg" class="ml-2 " width="15" height="15.1" fill="currentColor" class="bi bi-info-circle" viewBox="0 0 16 16">
@@ -10,11 +10,11 @@
                       <h1 class="text-4xl font-bold text-white ml-5">{{$cmimi }}</h1>
                       <div class="flex space-x-4">
                          <p class="text-lg text-white ml-16 mb-6">Qta</p>
-                            <select name="" id="" class="mr-6 w-24 h-11 rounded-md bg-transparent" style="border: 1px solid #FFFFFF">
-                               <option value="0">0</option>
-                               <option value="1">1</option>
-                               <option value="2">2</option>
-                               <option value="3">3</option>
+                            <select name="quantity" id="{{$selectId}}" onchange="colorChange()" class="cursor-pointer outline-none text-primary bg-transparent border-2 border-primary mr-6 w-24 h-11 rounded-md" style="border: 1px solid #FFFFFF">
+                               <option class="text-black" value="0">0</option>
+                               <option class="text-black" value="1">1</option>
+                               <option class="text-black" value="2">2</option>
+                               <option class="text-black" value="3">3</option>
                              </select>
                        </div>
                     </div>

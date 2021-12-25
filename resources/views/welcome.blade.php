@@ -16,7 +16,8 @@
 </div>
 <!-- Sesioni 01-->
 <div class="contanier lg:mt-8 mt-4 lg:px-32 px-8 pt-12">
-  
+<form  method="POST">
+     @csrf
   <livewire:title comments="01. Prenota ora i tamponi in Drive-in">
     <div class="cardelement h-64 sm:h-40 " style="background-color: #D0D8DA;">
          <div class="h-64 flex flex-col  md:flex-row  justify-between pr-4 pl-4 mt-8 mb-8 items-center sm:h-40 " style="background-color: #D0D8DA;">
@@ -24,7 +25,7 @@
                   <svg xmlns="http://www.w3.org/2000/svg" width="37.15" height="53" fill="currentColor" class="bi bi-geo-alt-fill 2xl:ml-16" viewBox="0 0 16 16" style="color: #09425A;">
                     <path d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10zm0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6z"/>
                   </svg>
-                  <h1 class="2xl:ml-12 ml-6 2xl:text-4xl text-xl" style="color: #09425A;">ParkinGO Malpensa</h1>
+                  <input type="text" class=" border-none 2xl:ml-12 ml-6 2xl:text-4xl text-xl placeholder-opacity-100" id="txtvalue" style="background-color: #D0D8DA; color: #09425A;" placeholder="ParkinGO Malpensa" disabled> </input>
              </div>
              <div class="sm:hidden flex flex-row items-center">
               <svg xmlns="http://www.w3.org/2000/svg" width="20" height="53" fill="currentColor" class="bi bi-clock-fill" viewBox="0 0 16 16" style="color: #09425A;">
@@ -32,8 +33,13 @@
               </svg>
               <span class="inline-block text-xl ml-7" style="color: #09425A;">Mar 23 Feb 2021</span>
             </div>
-            <div  class="block lg:w-auto md:w-auto pb-3 pl-40 sm:w-full text-right">
-              <p class="ml-0 sm:m-auto underline 2xl:mr-20" style="color: #09425A;">Modifica negozio</p>
+            <div  class="dropdown block lg:w-auto md:w-auto pb-3 pl-40 sm:w-full text-right">
+              <p class="dropbtn ml-0 sm:m-auto underline 2xl:mr-20" style="color: #09425A;">Modifica negozio</p>
+              <select class="dropdown-content" id="ddselect" onchange="ddlselect()">
+              
+                <option value="1">ParkinGo Malpensa</option>
+                <option value="1">ParkinGo Milano</option>
+             </select>
             </div>
         </div>
        
@@ -43,189 +49,181 @@
   <div class="pt-14 ">
     <livewire:title comments="02. Prenota ora i tamponi in Drive-in">
        <div class="flex items-start lg:flex-row md:flex-row flex-col sm:flex p-0s gap-5">
-         <livewire:card-element02 txt="Tampone Rapido Antigenico" price="50$">
-         <livewire:card-element02 txt="Tampone Moleculare PCR " price="90$">
+         <livewire:card-element02 txt="Tampone Rapido Antigenico" price="50$" selectId="selectValue" divId="active">
+         <livewire:card-element02 txt="Tampone Moleculare PCR " price="90$" selectId="selectValue1" divId="active1">
         </div>
   </div>
    
  
 <!-- Section 03-->
-<div class="pt-12" style="">
+<div class="pt-12">
   <livewire:title comments="03. Scegli fra le date e orari disponibili">
     
-  <h1 class="lg:mt-7 mt-5 w-16 h-9 lg:text-2xl md:text-2xl sm:text-lg ml-2.5" style="color: #09425A;">Date</h1>
-  <div class="grid lg:flex grid-cols-2 lg:flex-wrap md:flex md:flex-wrap" style="grid-template-columns: 1fr 1fr">
-  <livewire:button-date btn="lunedì27">
-  <livewire:button-date btn="lunedì27">
-  <livewire:button-date btn="lunedì27">
-  <livewire:button-date btn="lunedì27">
-  <livewire:button-date btn="lunedì27">
-  <livewire:button-date btn="lunedì27">
-  <livewire:button-date btn="lunedì27">
-  <livewire:button-date btn="lunedì27">
-  <livewire:button-date btn="lunedì27">
-  <livewire:button-date btn="lunedì27">
-</div>
+  <h1 class="lg:mt-7 mt-5 w-16 h-9 lg:text-2xl md:text-2xl sm:text-lg lg:mb-1.5 " style="color: #09425A;">Date</h1>
+    <!-- <div class="grid lg:flex grid-cols-2 lg:flex-wrap md:flex md:flex-wrap" style="grid-template-columns: 1fr 1fr"> -->
+     <div class="grid grid-cols-2 gap-5 lg:grid-cols-6 xl:grid-cols-8">
+        @for ($i = 0; $i < 10; $i++)
+        <livewire:button-date btn="{{\Carbon\Carbon::now()->addDays($i)->toDateString()}}" btn_id="{{'date'.$i}}"/>
+       @endfor
+     </div>
 </div>
 <div class="">
-  <h1 class="lg:mt-7 mt-5 w-16 h-9 lg:text-2xl md:text-2xl sm:text-lg ml-2.5" style="color: #09425A;">Orari</h1>
-  <div class="grid lg:flex grid-cols-2 lg:flex-wrap md:flex md:flex-wrap" style="grid-template-columns: 1fr 1fr">
-  <livewire:button-date btn="10:00">
-  <livewire:button-date btn="10:00">
-  <livewire:button-date btn="10:00">
-  <livewire:button-date btn="10:00">
-  <livewire:button-date btn="10:00">
-  <livewire:button-date btn="10:00">
-  <livewire:button-date btn="10:00">
-  <livewire:button-date btn="10:00">
-  <livewire:button-date btn="10:00">
-  <livewire:button-date btn="10:00">
-  <livewire:button-date btn="10:00">
-  <livewire:button-date btn="10:00">
+    <h1 class="lg:mt-7 mt-5 w-16 h-9 lg:text-2xl md:text-2xl sm:text-lg lg:mb-1.5" style="color: #09425A;">Orari</h1>
+      <!-- <div class="grid lg:flex grid-cols-2 lg:flex-wrap md:flex md:flex-wrap" style="grid-template-columns: 1fr 1fr">-->
+      <div class="grid grid-cols-2 gap-5 lg:grid-cols-6 xl:grid-cols-8">
+         @for ($i = 0; $i < 10; $i++)
+         <livewire:buton-orar btn="{{\Carbon\Carbon::today()->subHours(4)->addHours($i)->format('g:i',strtotime('7:00'))}}" btn_id="{{'orari'.$i}}"/>
+         @endfor
+      </div>
 </div>
-</div>
+
 
 
 <!--forma/section 04 -->
 <div class="lg:pt-12 pt-7 ">
    <livewire:title comments="04. Dati anagrafici">
-   <form>
+   
     <div class="grid grid-cols-1 gap-x-2  md:grid-cols-2 md:gab-x-2 md:gab-y-6 ">
         <div class="flex flex-col">
          <livewire:label h1Element="Nome">
-         <livewire:textbox>
+         <livewire:textbox nameEl="Nome" type="text">
         </div>
        <div class="flex flex-col">
          <livewire:label h1Element="Conome">
-         <livewire:textbox>
+         <livewire:textbox nameEl="Conome" type="text">
        </div>
        <div class="flex flex-col">
          <livewire:label h1Element="Email">
-         <livewire:textbox>
+         <livewire:textbox nameEl="Email" type="email">
          <p class="textparagraf lg:pb-9 pb-3.5 text-sm">La conferma verrà invita a questa mail. <br> Si richiede di utilizzare la mail propria personale non mail aziendali</p>
        </div>
        <div class="flex flex-col">
           <livewire:label h1Element="Cellulare">
          <div class="flex gab-x-px lg:gab-x-1 mb-1.5">
-           <select class="rounded-md py-2 w-1/4 mr-1 2xl:w-1/6 2xl:h-14 text-center" id="cellulare" style="border: 1px solid #0FB7B6;">
+           <select class="rounded-md py-2 w-1/4 mr-1 2xl:w-1/6 2xl:h-14 text-center" id="cellulare" name="prefix" style="border: 1px solid #0FB7B6;">
                    <option>+399</option>
                    <option>+44 20</option> 
               </select>
-           <input type="text" class="rounded-md py-2 w-3/4 2xl:h-14 2xl:w-4/6 " style="border: 1px solid #0FB7B6;">
-          </div>
+           <input type="number" class="rounded-md py-2 w-3/4 2xl:h-14 2xl:w-4/6 px-3" name="Cellulare" style="border: 1px solid #0FB7B6;"> 
+           </div>
+          <span class="text-red-500">@error('Cellulare'){{$message}}@enderror</span>
        </div>
        <div class="flex flex-col">
-         <livewire:label h1Element="Nazionalita">
-         <livewire:textbox>
+       <livewire:label h1Element="Nazionalita">
+         <livewire:textbox nameEl="Nazionalita" type="text">
        </div>
        <div class="flex flex-col">
-         <livewire:label h1Element="Codice fiscale">
-         <livewire:textbox>
+         <livewire:label h1Element="Code di fiscale">
+         <livewire:textbox nameEl="Code_di_fiscale" type="number">
        </div>
        <div class="flex flex-col">
          <livewire:label h1Element="Data di nascita">
-         <livewire:textbox>
+         <livewire:textbox nameEl="Data_di_nascita" type="date">
        </div>
        <div class="flex flex-col">
          <livewire:label h1Element="Sesso">
           <div class="flex items-center">
             <div class="flex place-items-center">
-              <livewire:input-radio lblradioEl="M">
+              <livewire:input-radio lblradioEl="M" radioName="Sesso">
             </div>
             <div class="flex place-items-center">
-               <livewire:input-radio lblradioEl="F">
+               <livewire:input-radio lblradioEl="F" radioName="Sesso">
             </div>
           </div>
+          <span class="text-red-500">@error('Sesso'){{$message}}@enderror</span>
        </div>
        <div class="flex flex-col">
          <livewire:label h1Element="Comune residenca">
-         <livewire:textbox>
+         <livewire:textbox nameEl="Comune_residenca" type="text">
        </div>
        <div class="flex flex-col">
          <livewire:label h1Element="Cap">
-         <livewire:textbox>
+         <livewire:textbox nameEl="Cap" type="number">
        </div>
        <div class="flex flex-col">
-         <livewire:label h1Element="Indirizzo">
-         <livewire:textbox>
+         <livewire:label h1Element="Indirizzio">
+         <livewire:textbox nameEl="Indirizzio" type="text">
        </div>
     </div>
-   </form>
+   
    <div>
-     <livewire:checkbox lblcheck="Ho preso visione dell’informativa sul trattamento dei miei dati personali e i Termini e Condizioni *(leggi) ">
+     <livewire:checkbox lblcheck="Ho preso visione dell’informativa sul trattamento dei miei dati personali e i Termini e Condizioni *(leggi) " namecheckbox="checkbox2">
      <livewire:checkbox lblcheck=" Ho preso visione dell'informativa sul tratamentto dei miei dati personali e do il consenso al loro tratamentto da parte di
-                Medispa S.r.l quale unico Responsabile Esterno del tratamentto dei dati sanitari .*(leggi)">
+                Medispa S.r.l quale unico Responsabile Esterno del tratamentto dei dati sanitari .*(leggi)" namecheckbox="checkbox1">
     </div>
    <livewire:send-button button="AVANTI">
-
+   
 </div> 
 
 <!-- Section 05-->
 <div class="">
   <livewire:title comments="05. Tipo di ricevuta">
      <p class="h-8 lg:text-2xl md:text-2xl lg:mb-11 mb-7 text-xs " style="color: #09425A;">A chi dovrà essere intestata la fattura?</p>
-
-        <div class=" flex"> 
-   
-
-          <button class="lg:w-80 lg:h-24  w-40 h-12 rounded-md mr-2 lg:mr-4 md:w-80 md:h-24 md:mr-4" style="background: #D0D8DA;">
-              <div class="lg:ml-16 md:ml-16 ml-6 flex items-center">
-                 <i class='fas fa-users lg:text-4xl md:text-4xl w-6 h-6 sm:leading-normal'  style=' color:#0FB7B6; line-height: 25px'></i>
-                 <h1 class="lg:w-24 lg:h-9 md:w-24 md:h-9 md:ml-14 w-12 sm:text-2xl font-bold lg:ml-14" style="color: #009ABB;">Azienda</h1>
-            </div>
-          </button>
-
-          <button class="lg:w-80 lg:h-24 w-40 h-12 rounded-md md:w-80 md:h-24 md:mr-4" style="background: #0FB7B6;">
-            <div class="lg:ml-16 md:ml-16 ml-6 flex items-center">
-                <i class='fas fa-user lg:text-4xl md:text-4xl w-6 h-6 ' style='color:#FFFFFF; line-height: 25px'></i>
-                <h1 class="lg:w-24 w-12 lg:h-9 md:w-24 md:h-9 md:ml-14 sm:text-2xl font-bold lg:ml-14" style=" color: #FFFFFF;">Privato</h1>
-            </div>
-          </button> 
-        </div>   
+     
+        <div class="grid grid-cols-2 mt-7 lg:flex lg:mt-11">
+          <input name="receipt" type="radio" id="azienda" class="hidden" checked>
+          <label class="flex justify-center px-2 mr-1 border-2 rounded-md  lg:w-48 radio-lbl hover:shadow-lg cursor-pointer" for="azienda">
+             <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-6 my-auto lg:w-10 lg:h-8" viewBox="0 0 20 20" fill="currentColor">
+               <path d="M13 6a3 3 0 11-6 0 3 3 0 016 0zM18 8a2 2 0 11-4 0 2 2 0 014 0zM14 15a4 4 0 00-8 0v3h8v-3zM6 8a2 2 0 11-4 0 2 2 0 014 0zM16 18v-3a5.972 5.972 0 00-.75-2.906A3.005 3.005 0 0119 15v3h-3zM4.75 12.094A5.973 5.973 0 004 15v3H1v-3a3 3 0 013.75-2.906z" />
+             </svg> 
+             <p class="font-bold text-sm my-5 ml-2 lg:ml-6 lg:text-base text-white">Azienda</p>
+          </label>
+         
+            <input class="hidden" name="receipt" type="radio" id="privato">
+            <label class="flex px-5 border-2 rounded-md lg:w-48 radio-lbl hover:shadow-lg cursor-pointer" for="privato">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-6 my-auto lg:w-10 lg:h-8" viewBox="0 0 20 20" fill="currentColor">
+               <path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd" />
+              </svg> 
+              <p class="font-bold text-sm my-5 ml-2 lg:ml-6 lg:text-base text-button" >Privato</p>
+            </label>
+         
+          </div>
+        
 
             <!--Forma section 05 -->
+    
      <div class="lg:mt-20 mt-5 ">
          <div class="grid grid-cols-1 gap-x-2  md:grid-cols-2 md:gab-x-2 md:gab-y-6 ">
             <div class="flex flex-col">
                <livewire:label h1Element="Nome">
-               <livewire:textbox>
+               <livewire:textbox nameEl="Nome_user" type="text">
              </div>
            <div class="flex flex-col">
               <livewire:label h1Element="Conome">
-              <livewire:textbox>
+              <livewire:textbox nameEl="Cogname_user" type="text">
            </div>
            <div class="flex flex-col">
               <livewire:label h1Element="Codice Fiscale">
-              <livewire:textbox>
+              <livewire:textbox nameEl="Codice_Fiscale" type="text">
            </div>
            <div class="flex flex-col">
             <livewire:label h1Element="Email invio fattura">
-            <livewire:textbox>
+            <livewire:textbox nameEl="Email_fattura" type="text">
           </div>
           <div class="flex flex-col">
             <livewire:label h1Element="Indirizzo">
-            <livewire:textbox>
+            <livewire:textbox nameEl="Indirizzo" type="text">
           </div>
           <div class="flex flex-col">
             <livewire:label h1Element="Citta">
-            <livewire:textbox>
+            <livewire:textbox nameEl="Citta" type="text">
          </div>
          <div class="flex flex-col">
            <livewire:label h1Element="Cap">
-           <livewire:textbox>
+           <livewire:textbox nameEl="Cap" type="number">
          </div>
          <div class="flex flex-col">
            <livewire:label h1Element="Provinzia">
-           <livewire:textbox>
+           <livewire:textbox nameEl="Provinzia" type="text">
          </div>
          <div class="flex flex-col">
            <livewire:label h1Element="Nazione">
-           <livewire:textbox>
+           <livewire:textbox nameEl="Nazione" type="text">
        </div>
     </div>
   </div>
   <livewire:send-button button="VERIFICA">
-
+  </form>
 </div> 
 
 <!-- section 06-->
@@ -249,20 +247,20 @@
              <div class="grid grid-cols-1 gap-x-28  md:grid-cols-1 md:gab-x-28 md:gab-y-6 ">
                <div class="flex flex-col">
                   <livewire:label h1Element="Provincia">
-                  <input type="text" class="rounded-md  py-2 lg:mb-6 mb-3.5 sm:w-5/6 lg:w-full sm:h-16" style="border: 1px solid #0FB7B6;">
+                  <input type="text" class="rounded-md  py-2 lg:mb-6 mb-3.5 sm:w-5/6 lg:w-full sm:h-16 px-3" style="border: 1px solid #0FB7B6;">
                </div>
 
                 <div class="flex flex-col mb-8">
                   <livewire:label h1Element="Data di scandeza">
                     <div class="flex gab-x-px lg:gab-x-1">
-                         <input type="text" class="rounded-md py-2 w-2/4 lg:mr-12 mr-4 sm:w-2/5 sm:h-16 lg:w-full" style="border: 1px solid #0FB7B6;">
-                         <input type="text" class="rounded-md py-2 w-2/4 sm:w-2/5 sm:h-16 lg:w-full" style="border: 1px solid #0FB7B6;">
+                         <input type="date" class="rounded-md py-2 w-2/4 lg:mr-12 mr-4 sm:w-2/5 sm:h-16 lg:w-full px-3" style="border: 1px solid #0FB7B6;">
+                         <input type="text" class="rounded-md py-2 w-2/4 sm:w-2/5 sm:h-16 lg:w-full px-3" style="border: 1px solid #0FB7B6;">
                      </div>
                </div>
           
                 <div class="flex flex-col">
                   <livewire:label h1Element="Nome sulla carta">
-                  <input type="text" class="rounded-md  py-2 lg:mb-6 mb-3.5 sm:w-5/6 sm:h-16 lg:w-full" style="border: 1px solid #0FB7B6;">
+                  <input type="text" class="rounded-md  py-2 lg:mb-6 mb-3.5 sm:w-5/6 sm:h-16 lg:w-full px-3" style="border: 1px solid #0FB7B6;">
                 </div>
              </div>
            </div>
@@ -270,16 +268,16 @@
          <!--Paypal/checkbox -->
          <div class="mb-7 grid grid-cols-1 gap-y-5">
             <div class="flex space-x-6">
-               <livewire:input-radio lblradioEl="PayPal"> <img src="img/paypal.png" alt="paypal" class="lg:pl-9 pl-1 w-18 h-6  lg:w-20 lg:h-10">
+               <livewire:input-radio lblradioEl="PayPal" radioName="gender"> <img src="img/paypal.png" alt="paypal" class="lg:pl-9 pl-1 w-18 h-6  lg:w-20 lg:h-10">
                <label class="lg:text-2xl sm:text-xs">Che cos’e PayPal?</label> 
             </div>
 
-              <livewire:input-radio lblradioEl="GooglePay"> 
+              <livewire:input-radio lblradioEl="GooglePay" radioName="gender"> 
           </div>
           
-     <livewire:checkbox lblcheck="Ho preso visione dell’informativa sul trattamento dei miei dati personali e i Termini e Condizioni *(leggi) ">
-     <livewire:checkbox lblcheck="Ho preso visione dell’informativa sul trattamento dei miei dati personali e do il consenso al loro trattamento da parte di Medispa S.r.l. quale unico Responsabile Esterno del trattamento dei dati sanitari. * (leggi)">
-     <livewire:checkbox lblcheck="Ho preso visione dell’informativa sul trattamento dei miei dati personali e do il consenso al loro trattamento da parte di Medispa S.r.l. quale unico Responsabile Esterno del trattamento dei dati sanitari. * (leggi)">
+     <livewire:checkbox lblcheck="Ho preso visione dell’informativa sul trattamento dei miei dati personali e i Termini e Condizioni *(leggi) " namecheckbox="checkbox3">
+     <livewire:checkbox lblcheck="Ho preso visione dell’informativa sul trattamento dei miei dati personali e do il consenso al loro trattamento da parte di Medispa S.r.l. quale unico Responsabile Esterno del trattamento dei dati sanitari. * (leggi)" namecheckbox="checkbox4">
+     <livewire:checkbox lblcheck="Ho preso visione dell’informativa sul trattamento dei miei dati personali e do il consenso al loro trattamento da parte di Medispa S.r.l. quale unico Responsabile Esterno del trattamento dei dati sanitari. * (leggi)" namecheckbox="checkbox5">
   
        
             <livewire:send-button button="CONFERMA E PAGA">

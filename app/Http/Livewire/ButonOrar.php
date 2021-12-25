@@ -4,7 +4,7 @@ namespace App\Http\Livewire;
 
 use Livewire\Component;
 
-class ButtonDate extends Component
+class ButonOrar extends Component
 {
     public $btn;
     public $btn_id;
@@ -13,9 +13,8 @@ class ButtonDate extends Component
         $this->btn_id=$btn_id;
 
     }
-
     public function render()
     {
-        return view('livewire.button-date');
+        return view('livewire.buton-orar');
     }
 }
